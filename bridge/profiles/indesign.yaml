@@ -1,0 +1,62 @@
+name: InDesign
+bundle_id: com.adobe.InDesign
+
+controls:
+
+  # --- Dials ---------------------------------------------------------------
+
+  zoom:
+    type: dial
+    cc: 21
+    clockwise: "cmd+equal"
+    counterclockwise: "cmd+minus"
+    max_repeats: 8
+
+  font_size:
+    type: dial
+    cc: 22
+    clockwise: "cmd+shift+period"
+    counterclockwise: "cmd+shift+comma"
+
+  leading:
+    type: dial
+    cc: 23
+    clockwise: "opt+down"
+    counterclockwise: "opt+up"
+
+  page_turn:
+    type: dial
+    cc: 24
+    clockwise: "shift+pagedown"
+    counterclockwise: "shift+pageup"
+    max_repeats: 6
+
+  # --- Buttons -------------------------------------------------------------
+
+  undo:
+    note: 36
+    press: "cmd+z"
+
+  selection_tool:
+    note: 37
+    press: "v"
+
+  direct_selection:
+    note: 38
+    press: "a"
+
+  type_tool:
+    note: 39
+    press: "t"
+
+  fit_page:
+    note: 40
+    press: "cmd+0"
+
+  preview_mode:
+    note: 41
+    press: "w"
+
+  save:
+    note: 42
+    press: "cmd+s"

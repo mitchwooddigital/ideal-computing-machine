@@ -1,0 +1,91 @@
+# Photoshop has no MIDI support of any kind, so every control here goes
+# through a keyboard shortcut. Brush size on a dial is the single biggest win.
+#
+# The cc/note numbers below are a starting layout. Run
+#   python3 monobridge.py --monitor
+# and turn each control to discover the numbers your console actually sends,
+# then edit them here.
+
+name: Photoshop
+bundle_id: com.adobe.Photoshop
+
+controls:
+
+  # --- Dials ---------------------------------------------------------------
+
+  brush_size:
+    type: dial
+    cc: 21
+    clockwise: "]"          # Photoshop's increase-brush-size shortcut
+    counterclockwise: "["
+    # Brush size steps are small; 2 keystrokes per detent feels closer to
+    # the speed of dragging the on-canvas size ring.
+    step: 2
+
+  brush_hardness:
+    type: dial
+    cc: 22
+    clockwise: "shift+]"
+    counterclockwise: "shift+["
+
+  zoom:
+    type: dial
+    cc: 23
+    clockwise: "cmd+equal"
+    counterclockwise: "cmd+minus"
+    max_repeats: 8          # zoom compounds fast; keep a spin from overshooting
+
+  layer_select:
+    type: dial
+    cc: 24
+    clockwise: "opt+]"      # select layer above
+    counterclockwise: "opt+["
+    max_repeats: 6
+
+  history_scrub:
+    type: dial
+    cc: 25
+    clockwise: "cmd+shift+z"   # step forward through history
+    counterclockwise: "cmd+opt+z"  # step backward
+    max_repeats: 10
+
+  # --- Buttons -------------------------------------------------------------
+
+  undo:
+    note: 36
+    press: "cmd+z"
+
+  brush_tool:
+    note: 37
+    press: "b"
+
+  eraser_tool:
+    note: 38
+    press: "e"
+
+  move_tool:
+    note: 39
+    press: "v"
+
+  deselect:
+    note: 40
+    press: "cmd+d"
+
+  fit_on_screen:
+    note: 41
+    press: "cmd+0"
+
+  new_layer:
+    note: 42
+    press: "cmd+shift+n"
+
+  save:
+    note: 43
+    press: "cmd+s"
+
+  # Hold-to-preview: hides selection edges while the key is held down. This is
+  # the pattern to copy for any "momentary" control.
+  hide_edges:
+    note: 44
+    press: "cmd+h"
+    release: "cmd+h"

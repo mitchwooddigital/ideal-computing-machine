@@ -1,0 +1,2 @@
+# Requires the hidapi C library first:  brew install hidapi
+hidapi>=0.14

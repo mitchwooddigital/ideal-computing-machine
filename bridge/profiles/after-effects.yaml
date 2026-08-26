@@ -1,0 +1,73 @@
+# After Effects exposes no control-surface API, so this is keystroke-driven.
+# Frame-stepping on a dial is the closest thing to a jog wheel you can get
+# without the dead Monogram plugin.
+
+name: After Effects
+bundle_id: com.adobe.AfterEffects
+
+controls:
+
+  # --- Dials ---------------------------------------------------------------
+
+  frame_step:
+    type: dial
+    cc: 21
+    clockwise: "pagedown"   # next frame
+    counterclockwise: "pageup"
+    step: 1
+    max_repeats: 30         # a fast spin should still scrub a long way
+
+  timeline_zoom:
+    type: dial
+    cc: 22
+    clockwise: "equal"
+    counterclockwise: "minus"
+    max_repeats: 8
+
+  comp_zoom:
+    type: dial
+    cc: 23
+    clockwise: "period"
+    counterclockwise: "comma"
+    max_repeats: 8
+
+  layer_select:
+    type: dial
+    cc: 24
+    clockwise: "cmd+down"
+    counterclockwise: "cmd+up"
+    max_repeats: 6
+
+  # --- Buttons -------------------------------------------------------------
+
+  play_pause:
+    note: 36
+    press: "space"
+
+  undo:
+    note: 37
+    press: "cmd+z"
+
+  go_to_start:
+    note: 38
+    press: "home"
+
+  go_to_end:
+    note: 39
+    press: "end"
+
+  ram_preview:
+    note: 40
+    press: "keypad0"
+
+  toggle_transparency:
+    note: 41
+    press: "shift+opt+keypad4"
+
+  new_solid:
+    note: 42
+    press: "cmd+y"
+
+  save:
+    note: 43
+    press: "cmd+s"

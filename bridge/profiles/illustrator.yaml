@@ -1,0 +1,69 @@
+name: Illustrator
+bundle_id: com.adobe.illustrator
+
+controls:
+
+  # --- Dials ---------------------------------------------------------------
+
+  zoom:
+    type: dial
+    cc: 21
+    clockwise: "cmd+equal"
+    counterclockwise: "cmd+minus"
+    max_repeats: 8
+
+  stack_order:
+    type: dial
+    cc: 22
+    clockwise: "cmd+]"      # bring forward
+    counterclockwise: "cmd+["
+    max_repeats: 10
+
+  font_size:
+    type: dial
+    cc: 23
+    clockwise: "cmd+shift+period"
+    counterclockwise: "cmd+shift+comma"
+    step: 1
+
+  nudge:
+    type: dial
+    cc: 24
+    clockwise: "right"
+    counterclockwise: "left"
+    step: 1
+    max_repeats: 20
+
+  # --- Buttons -------------------------------------------------------------
+
+  undo:
+    note: 36
+    press: "cmd+z"
+
+  selection_tool:
+    note: 37
+    press: "v"
+
+  direct_selection:
+    note: 38
+    press: "a"
+
+  pen_tool:
+    note: 39
+    press: "p"
+
+  type_tool:
+    note: 40
+    press: "t"
+
+  group:
+    note: 41
+    press: "cmd+g"
+
+  fit_artboard:
+    note: 42
+    press: "cmd+0"
+
+  save:
+    note: 43
+    press: "cmd+s"

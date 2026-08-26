@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# HID capture sessions are local investigation data.
+*.jsonl
