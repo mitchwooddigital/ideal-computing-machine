@@ -50,7 +50,7 @@ Observing what a device sends on a bus is not copying a program. It is the
 safest possible footing, and it is how the protocol work here should be done.
 
 **Preferred method — black-box observation.** Plug in hardware you own, watch
-what it sends, write down what you see. `probe/monoprobe.py` is built for
+what it sends, write down what you see. `probe/hidprobe.py` is built for
 exactly this. Nothing is reproduced, so no copyright question arises.
 
 **Discouraged — decompiling the vendor app.** It can be faster, and in some

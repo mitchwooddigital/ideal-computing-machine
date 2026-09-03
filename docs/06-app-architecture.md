@@ -57,7 +57,7 @@ that it still needs Creator and still needs Python.
 
 ### v2 — Standalone (after Route B)
 
-Once `monoprobe.py` yields the protocol, the engine is ported to Rust and the
+Once `hidprobe.py` yields the protocol, the engine is ported to Rust and the
 whole thing becomes one binary with no Python and no Creator.
 
 ```

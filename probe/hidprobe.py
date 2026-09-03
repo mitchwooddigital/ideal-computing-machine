@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""monoprobe - map the Monogram Console's raw USB HID protocol.
+"""hidprobe - map the Monogram Console's raw USB HID protocol.
 
 Route A (MIDI -> keystrokes) depends on Monogram Creator still running. This
 tool exists for the day it does not: it reads the console's raw HID reports so
@@ -8,17 +8,17 @@ a native driver can be written with no Monogram software in the loop at all.
 No public protocol dump exists for this hardware, so this is a discovery tool
 rather than a finished decoder. The workflow is:
 
-    1. python3 monoprobe.py --scan
+    1. python3 hidprobe.py --scan
          Find the console and note its vendor/product id.
 
-    2. python3 monoprobe.py --watch 0x1234:0x5678
+    2. python3 hidprobe.py --watch 0x1234:0x5678
          Turn one control at a time. Bytes that change are highlighted, which
          is usually enough to spot the layout by eye.
 
-    3. python3 monoprobe.py --record session.jsonl --watch 0x1234:0x5678
+    3. python3 hidprobe.py --record session.jsonl --watch 0x1234:0x5678
          Capture a labelled session, one control at a time.
 
-    4. python3 monoprobe.py --analyse session.jsonl
+    4. python3 hidprobe.py --analyse session.jsonl
          Report which byte offsets moved for which control, so the field
          layout falls out of the data instead of guesswork.
 

@@ -21,7 +21,7 @@ implementation of HID joystick, HID keyboard and MIDI connections.
 
 No public protocol dump exists. There were community attempts at the
 predecessor Palette Gear, but nothing was released as a usable library. So
-this starts from scratch, and `probe/monoprobe.py` is built for that.
+this starts from scratch, and `probe/hidprobe.py` is built for that.
 
 ## Install
 
@@ -34,14 +34,14 @@ pip install hidapi
 
 ```bash
 cd probe
-python3 monoprobe.py --scan
+python3 hidprobe.py --scan
 ```
 
 This flags anything whose manufacturer or product string mentions Monogram or
 Palette. If nothing matches, the device may report a generic name:
 
 ```bash
-python3 monoprobe.py --scan --all
+python3 hidprobe.py --scan --all
 ```
 
 Run that with the console unplugged, then plugged in, and diff the two lists.
@@ -54,7 +54,7 @@ you will need to try each.
 ## Step 2: watch the reports
 
 ```bash
-python3 monoprobe.py --watch 0xVVVV:0xPPPP
+python3 hidprobe.py --watch 0xVVVV:0xPPPP
 ```
 
 Bytes that changed since the previous report are `[bracketed]`, with a byte
@@ -70,7 +70,7 @@ claimed device may also need `sudo`.
 The point is one control at a time, each labelled:
 
 ```bash
-python3 monoprobe.py --watch 0xVVVV:0xPPPP \
+python3 hidprobe.py --watch 0xVVVV:0xPPPP \
     --record session.jsonl --label dial-1-clockwise
 ```
 
@@ -87,7 +87,7 @@ All labels append to the same file.
 ## Step 4: let the data show you the layout
 
 ```bash
-python3 monoprobe.py --analyse session.jsonl
+python3 hidprobe.py --analyse session.jsonl
 ```
 
 This reports which byte offsets varied under each label, then compares across
