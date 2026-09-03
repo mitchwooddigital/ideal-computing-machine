@@ -54,6 +54,11 @@ probe/      Route B: HID discovery toolkit for writing a native driver
 
 ## Start here
 
+**[QUICKSTART.md](QUICKSTART.md)** is the step-by-step checklist. Work
+through it in order; you get a working Photoshop dial about halfway.
+
+Reference docs, once you want detail:
+
 1. [Route A setup](docs/01-route-a-setup.md) — get the offline Creator app
    running and decide each module's output type.
 2. [Lightroom Classic](docs/02-lightroom-classic.md) — the MIDI2LR recipe.
