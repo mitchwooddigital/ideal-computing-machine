@@ -1,7 +1,10 @@
-# Monogram Console Revival
+# Console Companion
 
-Getting a Monogram Creative Console working with current Adobe apps on macOS
-after the company shut down.
+Keep your Monogram Creative Console and Palette Gear hardware working with
+current Adobe apps, after the vendor stopped supporting it.
+
+Console Companion is an independent interoperability project. It is not
+affiliated with, endorsed by, or a continuation of Monogram.
 
 Monogram's hardware is fine. What broke is the software layer between the
 console and Adobe: the "smart" plugins (the Lightroom plugin talking to
@@ -67,12 +70,29 @@ Reference docs, once you want detail:
 4. [Premiere Pro](docs/04-premiere-pro.md) — native control surface setup.
 5. [Route B](docs/05-route-b-reverse-engineering.md) — mapping the raw
    protocol.
+6. [App architecture](docs/06-app-architecture.md) — design sketch for the
+   standalone cross-platform app.
+
+## Contributing
+
+Protocol findings, profiles for apps not covered here, and output layers for
+other platforms are all welcome.
+
+**Read [LEGAL.md](LEGAL.md) before contributing.** It sets out the clean-room
+rules this project works under — chiefly that protocol work comes from
+observing your own hardware, never from vendor code or assets. It is short,
+and it is what keeps the project defensible.
 
 ## On legality
 
-Reverse-engineering hardware you own, to keep it working with software you
-own, is interoperability work. In most jurisdictions that is explicitly
-protected: it is not circumvention of copy protection, and no license is being
-evaded. Nothing here redistributes Monogram's software, defeats DRM, or
-bypasses licensing. It reads a USB device you paid for so it keeps doing the
-job you bought it for.
+Reverse-engineering hardware you own, to keep it working, is interoperability
+work and is protected in the major jurisdictions. Nothing here redistributes
+the vendor's software, defeats DRM, or bypasses licensing. It reads a USB
+device you paid for so it keeps doing the job you bought it for.
+
+[LEGAL.md](LEGAL.md) covers the detail: the specific exceptions relied on, the
+contributor rules, and the naming and trademark boundaries.
+
+## Licence
+
+[MIT](LICENSE).
