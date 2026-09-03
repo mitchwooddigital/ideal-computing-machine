@@ -37,6 +37,12 @@ the routine prompt updated to match.
 Cron `0 21 * * *` UTC, which is 7:00am AEST every day. Delivered to
 Mitch's own Slack DM.
 
+The routine fires back into the Claude Code session that created it,
+because fresh sessions spawned by a routine don't inherit the Slack,
+Shopify, Xero, Gmail and Calendar connectors. If that session is ever
+archived, recreate the routine from the claude.ai routines UI with those
+connectors attached and paste the prompt from this file's sections.
+
 ## Ideas not built yet
 
 - Real task list (Slack canvas or a small Neon table) instead of DM replies.
