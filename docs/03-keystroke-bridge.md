@@ -144,6 +144,15 @@ Then `launchctl load ~/Library/LaunchAgents/com.local.console-companion.plist`.
 Note that the LaunchAgent needs its own Accessibility permission, separate
 from your terminal's.
 
+**If you set this up before the rename**, the label and script name both
+changed. Unload the old agent before loading the new one, or you will have two
+copies fighting over the MIDI port:
+
+```bash
+launchctl unload ~/Library/LaunchAgents/com.local.monobridge.plist
+rm ~/Library/LaunchAgents/com.local.monobridge.plist
+```
+
 ## Troubleshooting
 
 **Events log with `-v` but the app does not respond.** Accessibility
