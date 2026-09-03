@@ -3,13 +3,13 @@
 
 Encoder decoding and shortcut parsing are where a bug shows up as "the dial
 only counts up" or "this button does nothing", which are annoying to diagnose
-against real hardware. Run with:  python3 test_monobridge.py
+against real hardware. Run with:  python3 test_companion.py
 """
 
 import unittest
 
 import keycodes
-from monobridge import Binding, Bridge, decode_relative
+from companion import Binding, Bridge, decode_relative
 
 
 class TestRelativeDecoding(unittest.TestCase):

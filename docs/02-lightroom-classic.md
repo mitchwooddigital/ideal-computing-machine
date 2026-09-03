@@ -72,7 +72,7 @@ Relative. Change it there.
 
 **Nothing responds at all.** Check MIDI2LR is actually receiving: its panel
 shows incoming messages. If it sees nothing, the problem is upstream in
-Creator, so go back to `monobridge.py --monitor` and confirm MIDI is leaving
+Creator, so go back to `companion.py --monitor` and confirm MIDI is leaving
 the console.
 
 **It broke after a Lightroom update.** Unlike the Monogram plugin, MIDI2LR is

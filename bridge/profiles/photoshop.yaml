@@ -2,7 +2,7 @@
 # through a keyboard shortcut. Brush size on a dial is the single biggest win.
 #
 # The cc/note numbers below are a starting layout. Run
-#   python3 monobridge.py --monitor
+#   python3 companion.py --monitor
 # and turn each control to discover the numbers your console actually sends,
 # then edit them here.
 

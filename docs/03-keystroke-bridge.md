@@ -4,7 +4,7 @@ None of these four apps support MIDI or control surfaces in any form. Adobe
 never built the API, and the Monogram plugin that faked it is dead. So the
 console has to reach them the way a keyboard does.
 
-That is what `bridge/monobridge.py` is: a daemon that listens to the console's
+That is what `bridge/companion.py` is: a daemon that listens to the console's
 MIDI and synthesises real macOS key events. Because it watches which app is
 frontmost, one physical layout serves every app and switches automatically as
 you move between them.
@@ -30,7 +30,7 @@ see events logged with `-v` but the app does not react, this is why.
 ## Find your control numbers
 
 ```bash
-python3 monobridge.py --monitor
+python3 companion.py --monitor
 ```
 
 Turn each dial and press each button, and note the CC and note numbers. The
@@ -40,19 +40,19 @@ differ, either reassign them in Creator or edit the profiles.
 ## Run it
 
 ```bash
-python3 monobridge.py --profiles profiles/ -v
+python3 companion.py --profiles profiles/ -v
 ```
 
 To see what *would* be sent without actually sending it:
 
 ```bash
-python3 monobridge.py --profiles profiles/ --dry-run -v
+python3 companion.py --profiles profiles/ --dry-run -v
 ```
 
 To check profiles parse without connecting to hardware:
 
 ```bash
-python3 monobridge.py --check
+python3 companion.py --check
 ```
 
 ## Writing profiles
@@ -116,7 +116,7 @@ skeleton and rebind to the tools you actually reach for.
 ## Run it automatically
 
 Once it is tuned, a LaunchAgent starts it at login. Write this to
-`~/Library/LaunchAgents/com.local.monobridge.plist`, correcting the paths:
+`~/Library/LaunchAgents/com.local.console-companion.plist`, correcting the paths:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -125,11 +125,11 @@ Once it is tuned, a LaunchAgent starts it at login. Write this to
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.local.monobridge</string>
+  <string>com.local.console-companion</string>
   <key>ProgramArguments</key>
   <array>
     <string>/usr/bin/python3</string>
-    <string>/full/path/to/bridge/monobridge.py</string>
+    <string>/full/path/to/bridge/companion.py</string>
     <string>--profiles</string>
     <string>/full/path/to/bridge/profiles</string>
   </array>
@@ -139,7 +139,7 @@ Once it is tuned, a LaunchAgent starts it at login. Write this to
 </plist>
 ```
 
-Then `launchctl load ~/Library/LaunchAgents/com.local.monobridge.plist`.
+Then `launchctl load ~/Library/LaunchAgents/com.local.console-companion.plist`.
 
 Note that the LaunchAgent needs its own Accessibility permission, separate
 from your terminal's.
@@ -165,7 +165,7 @@ running, or that module is not set to a MIDI output type.
 ## Tests
 
 ```bash
-python3 test_monobridge.py
+python3 test_companion.py
 ```
 
 Covers encoder decoding, shortcut parsing and event routing — the parts whose

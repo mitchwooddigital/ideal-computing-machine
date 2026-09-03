@@ -107,7 +107,7 @@ With offsets known, work out the encoding:
 
 - **Dials** are usually signed deltas. Check whether counter-clockwise reads
   as `0xFF, 0xFE ...` (two's complement) or `0x41, 0x42 ...` (signed bit) —
-  the same distinction `bridge/monobridge.py` handles for MIDI, since it
+  the same distinction `bridge/companion.py` handles for MIDI, since it
   reflects how the firmware thinks.
 - **Buttons** are usually a bit in a bitmask, so watch a byte while pressing
   several buttons and see which bit flips.
@@ -120,7 +120,7 @@ its on-screen value matches what you decoded.
 ## Step 6: write the driver
 
 Once decoding is confirmed, the driver is small. Read reports in a loop,
-decode to control events, and emit — reusing `bridge/monobridge.py`'s
+decode to control events, and emit — reusing `bridge/companion.py`'s
 `Keyboard` class for keystrokes, or a virtual MIDI port for apps that want
 MIDI. At that point the Creator app is out of the loop entirely.
 

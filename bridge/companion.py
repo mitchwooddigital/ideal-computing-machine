@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""monobridge - drive Adobe apps from a Monogram Creative Console over MIDI.
+"""Console Companion - drive Adobe apps from a Monogram console over MIDI.
 
 The Monogram Creator app still talks to the hardware fine, but its "smart"
 Adobe plugins are dead and will not be fixed. Creator can however emit plain
@@ -11,8 +11,8 @@ their own and would otherwise be unreachable.
 Profiles are per-application and switch automatically as you change apps, so
 one physical layout serves every program.
 
-    python3 monobridge.py --list-ports
-    python3 monobridge.py --profiles profiles/
+    python3 companion.py --list-ports
+    python3 companion.py --profiles profiles/
 """
 
 import argparse

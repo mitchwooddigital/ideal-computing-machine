@@ -46,7 +46,7 @@ Creator's keyboard mode may not do smoothly. If it feels coarse, use the
 bridge instead.
 
 **Option 2 — the bridge daemon.** Set dials to MIDI and use
-`bridge/monobridge.py` with a Premiere profile, exactly as for
+`bridge/companion.py` with a Premiere profile, exactly as for
 [the other Adobe apps](03-keystroke-bridge.md). This gives proper `step` and
 `max_repeats` control over scrub speed. Premiere's bundle id:
 

@@ -43,7 +43,7 @@ The Tauri app is a **config editor and supervisor**. The Python daemon stays
 exactly as it is and does the work.
 
 ```
-  Creator app  ──MIDI──>  monobridge.py  ──keystrokes──>  Adobe
+  Creator app  ──MIDI──>  companion.py  ──keystrokes──>  Adobe
                                ▲
                                │ reads profiles/*.yaml
                                │
@@ -123,7 +123,7 @@ Today Creator holds the former. Once we read the hardware directly, we own it.
 ## Platform output abstraction
 
 One trait, three implementations. The macOS one already exists in
-`bridge/monobridge.py` as the `Keyboard` class and ports directly.
+`bridge/companion.py` as the `Keyboard` class and ports directly.
 
 | Platform | Mechanism | Notes |
 |---|---|---|
@@ -167,7 +167,7 @@ protocol work moves quickly.
    Publish the byte map as its own document regardless of whether the app
    ever ships — it is the part that outlives the project.
 2. **Port the engine to Rust**, matching the existing Python behaviour, with
-   the test suite in `bridge/test_monobridge.py` as the specification. Those
+   the test suite in `bridge/test_companion.py` as the specification. Those
    27 tests translate directly and pin the encoder and routing semantics.
 3. **macOS output layer**, since that is where the hardware is.
 4. **Tauri shell** with profile editing and learn mode.

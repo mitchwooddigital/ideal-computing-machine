@@ -72,13 +72,13 @@ Before touching any Adobe app, confirm macOS sees the MIDI:
 ```bash
 cd bridge
 pip install mido python-rtmidi pyyaml
-python3 monobridge.py --list-ports
+python3 companion.py --list-ports
 ```
 
 The console should appear as an input port. Then watch live values:
 
 ```bash
-python3 monobridge.py --monitor
+python3 companion.py --monitor
 ```
 
 Turn each dial and press each button. You will see the CC and note numbers

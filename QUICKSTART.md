@@ -45,7 +45,7 @@ cd ideal-computing-machine/bridge
 pip3 install -r requirements.txt
 ```
 
-*Done when:* `python3 monobridge.py --check` prints `OK: 4 profile(s) valid.`
+*Done when:* `python3 companion.py --check` prints `OK: 4 profile(s) valid.`
 
 ---
 
@@ -68,7 +68,7 @@ without any of this. Only use MIDI for buttons you want the bridge to handle.
 ## Step 5 — Write down your control numbers
 
 ```bash
-python3 monobridge.py --monitor
+python3 companion.py --monitor
 ```
 
 Turn each dial and press each button one at a time. Note what each sends.
@@ -100,14 +100,14 @@ It is the single most common reason this appears broken.
 Open `profiles/photoshop.yaml` and edit the `cc:` and `note:` numbers to match
 your list from Step 5. Change nothing else yet.
 
-*Done when:* `python3 monobridge.py --check` still passes.
+*Done when:* `python3 companion.py --check` still passes.
 
 ---
 
 ## Step 8 — Test without sending anything
 
 ```bash
-python3 monobridge.py --dry-run -v
+python3 companion.py --dry-run -v
 ```
 
 Turn the dial you mapped to brush size. You should see logged keystrokes.
@@ -122,7 +122,7 @@ in Terminal, not Photoshop. It confirms MIDI is arriving.
 ## Step 9 — First real win
 
 ```bash
-python3 monobridge.py -v
+python3 companion.py -v
 ```
 
 Open Photoshop, pick the brush tool, and turn your brush-size dial.
