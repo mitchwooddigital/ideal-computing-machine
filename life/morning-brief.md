@@ -1,0 +1,66 @@
+# Morning brief
+
+A daily 7am (Brisbane) Slack DM that pulls from Shopify, Xero, Gmail and
+Google Calendar and posts a short brief. Runs as a Claude Code routine,
+not as code in this repo. This file is the spec so it can be tweaked and
+the routine prompt updated to match.
+
+## Design rules
+
+- Under 20 lines. If it needs scrolling it gets ignored.
+- Only flag things that need action. At most three fires.
+- Zero manual data entry. Everything is pulled.
+- Countdowns and plain comparisons, not raw dates and tables.
+- No em dashes.
+
+## Sections
+
+1. **Sales**: yesterday vs same weekday last week, plus bank balance.
+2. **Fires**: fulfilment backlog older than 2 days, unread email older than
+   24h, payables overdue over 3 months, sales down more than a third.
+3. **Calendar**: today's events, tomorrow's first.
+4. **Today's three**: echoes whatever Mitch replied with in the DM the day
+   before. Capped at three.
+
+## Data sources
+
+| Source | Call | Note |
+|---|---|---|
+| Shopify sales | `run-analytics-query`, `FROM sales SHOW orders, total_sales TIMESERIES day SINCE -8d UNTIL today` | |
+| Shopify backlog | `graphql_query` with `ordersCount` | `list-orders` is blocked for privacy, counts only |
+| Xero | `get_cash_position`, `get_aged_payables` | payables response is huge, read summary fields only |
+| Gmail | `search_threads`, `in:inbox is:unread older_than:1d newer_than:7d -category:promotions -category:social` | `{}` means zero |
+| Calendar | `list_events`, today to end of tomorrow, `Australia/Brisbane` | |
+
+## Schedule and where it runs
+
+7:00am Brisbane, every day, delivered to Mitch's own Slack DM. The
+standalone prompt lives in `morning-brief/prompt.md`.
+
+**On the Mac (preferred).** Two options, both pick up the claude.ai
+connectors (Slack, Shopify, Xero, Gmail, Calendar) automatically when
+logged in with the claude.ai account. Both need the Mac awake at 7am.
+
+1. Claude Desktop local routine. Desktop app, Code tab, Routines, New
+   routine, Local. Paste `morning-brief/prompt.md` as the instructions,
+   schedule daily 7:00, folder = this repo. Needs the Desktop app open.
+   Docs: https://code.claude.com/docs/en/desktop-scheduled-tasks
+2. launchd + Claude Code CLI. No app needs to be open. Run
+   `bash life/morning-brief/install.sh` once. It writes a LaunchAgent
+   that calls `run.sh`, which runs `claude -p` headless with
+   `--permission-mode auto`. Log: `~/Library/Logs/luxbmx-morning-brief.log`.
+   Test any time with `bash life/morning-brief/run.sh`.
+
+**In the cloud (fallback).** A Claude Code routine, cron `0 21 * * *`
+UTC, bound to the session that created it because fresh cloud sessions
+don't inherit connectors. Keep only one of cloud or local enabled or
+you'll get two briefs.
+
+## Ideas not built yet
+
+- Real task list (Slack canvas or a small Neon table) instead of DM replies.
+- Klaviyo: next scheduled campaign and days until send.
+- Meta Ads: spend this week vs last.
+- Semrush: keywords that dropped out of the top 10.
+- Content queue: products with empty descriptions.
+- A single-screen dashboard once a week of briefs shows what gets looked at.
