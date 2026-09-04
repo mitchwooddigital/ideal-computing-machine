@@ -32,16 +32,29 @@ the routine prompt updated to match.
 | Gmail | `search_threads`, `in:inbox is:unread older_than:1d newer_than:7d -category:promotions -category:social` | `{}` means zero |
 | Calendar | `list_events`, today to end of tomorrow, `Australia/Brisbane` | |
 
-## Schedule
+## Schedule and where it runs
 
-Cron `0 21 * * *` UTC, which is 7:00am AEST every day. Delivered to
-Mitch's own Slack DM.
+7:00am Brisbane, every day, delivered to Mitch's own Slack DM. The
+standalone prompt lives in `morning-brief/prompt.md`.
 
-The routine fires back into the Claude Code session that created it,
-because fresh sessions spawned by a routine don't inherit the Slack,
-Shopify, Xero, Gmail and Calendar connectors. If that session is ever
-archived, recreate the routine from the claude.ai routines UI with those
-connectors attached and paste the prompt from this file's sections.
+**On the Mac (preferred).** Two options, both pick up the claude.ai
+connectors (Slack, Shopify, Xero, Gmail, Calendar) automatically when
+logged in with the claude.ai account. Both need the Mac awake at 7am.
+
+1. Claude Desktop local routine. Desktop app, Code tab, Routines, New
+   routine, Local. Paste `morning-brief/prompt.md` as the instructions,
+   schedule daily 7:00, folder = this repo. Needs the Desktop app open.
+   Docs: https://code.claude.com/docs/en/desktop-scheduled-tasks
+2. launchd + Claude Code CLI. No app needs to be open. Run
+   `bash life/morning-brief/install.sh` once. It writes a LaunchAgent
+   that calls `run.sh`, which runs `claude -p` headless with
+   `--permission-mode auto`. Log: `~/Library/Logs/luxbmx-morning-brief.log`.
+   Test any time with `bash life/morning-brief/run.sh`.
+
+**In the cloud (fallback).** A Claude Code routine, cron `0 21 * * *`
+UTC, bound to the session that created it because fresh cloud sessions
+don't inherit connectors. Keep only one of cloud or local enabled or
+you'll get two briefs.
 
 ## Ideas not built yet
 
